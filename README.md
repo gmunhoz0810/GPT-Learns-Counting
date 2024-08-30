@@ -2,7 +2,7 @@
 
 Live at: [https://gmunhoz0810.github.io/GPT-Learns-Counting/](https://gmunhoz0810.github.io/GPT-Learns-Counting/)
 
-![GPT Learns Counting Interface](/imgs/GPT-Interface.jpg)
+![GPT Learns Counting Interface](/imgs/GPT-New.jpg)
 
 In comparisson to the official GPT-4o which still gets this wrong.
 
