@@ -2,6 +2,10 @@
 
 ![GPT Learns Counting Interface](/imgs/GPT-Interface.jpg)
 
+In comparisson to the official GPT-4o which still gets this wrong.
+
+![GPT Learns Counting Interface](/imgs/GPT-Official.jpg)
+
 ## What it does
 
 GPT Learns Counting is an interactive web application that demonstrates the power of AI in performing simple counting tasks. The application allows users to input phrases or words and request various counting operations, such as:
