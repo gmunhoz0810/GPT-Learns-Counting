@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from openai import OpenAI
 import os
 import json
+from datetime import datetime
 
 app = FastAPI()
 
@@ -52,6 +53,12 @@ def count_occurrences(needle: str, haystack: str) -> int:
 def count_characters(text: str) -> int:
     return len(text)
 
+def get_delivery_date(order_id: str) -> str:
+    # Simulating a database query
+    # In a real application, you would query your database here
+    # For this example, we'll just return a fixed date
+    return "2024-09-05"
+
 @app.post("/query")
 async def process_query(query: Query):
     try:
@@ -86,6 +93,20 @@ async def process_query(query: Query):
                         "required": ["text"]
                     }
                 }
+            },
+            {
+                "type": "function",
+                "function": {
+                    "name": "get_delivery_date",
+                    "description": "Get the delivery date for a customer's order",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "order_id": {"type": "string", "description": "The customer's order ID"}
+                        },
+                        "required": ["order_id"]
+                    }
+                }
             }
         ]
 
@@ -100,27 +121,36 @@ async def process_query(query: Query):
 
         if assistant_message.tool_calls:
             for tool_call in assistant_message.tool_calls:
-                if tool_call.function.name == "count_occurrences":
-                    function_args = json.loads(tool_call.function.arguments)
+                function_name = tool_call.function.name
+                function_args = json.loads(tool_call.function.arguments)
+                
+                if function_name == "count_occurrences":
                     needle = function_args.get("needle")
                     haystack = function_args.get("haystack")
                     count = count_occurrences(needle, haystack)
-                    assistant_response = f"I've counted the occurrences for you. The letter or word '{needle}' appears {count} time(s) in the text '{haystack}'."
-                elif tool_call.function.name == "count_characters":
-                    function_args = json.loads(tool_call.function.arguments)
+                    function_response = f"The letter or word '{needle}' appears {count} time(s) in the text '{haystack}'."
+                elif function_name == "count_characters":
                     text = function_args.get("text")
                     count = count_characters(text)
-                    assistant_response = f"I've counted the characters for you. The text '{text}' contains {count} character(s)."
-        else:
-            assistant_response = assistant_message.content
+                    function_response = f"The text '{text}' contains {count} character(s)."
+                elif function_name == "get_delivery_date":
+                    order_id = function_args.get("order_id")
+                    delivery_date = get_delivery_date(order_id)
+                    function_response = f"The delivery date for order {order_id} is {delivery_date}."
+                
+                conversation.add_message("function", function_response)
 
-        if assistant_response is None:
-            assistant_response = "I apologize, but I couldn't generate a proper response. Could you please rephrase your question?"
+        # Generate final response from AI
+        final_response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=conversation.get_messages()
+        )
 
-        conversation.add_message("assistant", assistant_response)
+        ai_response = final_response.choices[0].message.content
+        conversation.add_message("assistant", ai_response)
 
         return {
-            "response": assistant_response,
+            "response": ai_response,
             "conversation_ended": False
         }
 
