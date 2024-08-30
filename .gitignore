@@ -9,3 +9,4 @@ backend/new_env/
 .env/
 backend/.env
 extension/
+.DS_Store
