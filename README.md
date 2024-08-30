@@ -1,6 +1,6 @@
 # GPT Learns Counting
 
-![GPT Learns Counting Interface](/imgs/GPT-Learns-Counting.jpg)
+![GPT Learns Counting Interface](/imgs/GPT-Interface.jpg)
 
 ## What it does
 
