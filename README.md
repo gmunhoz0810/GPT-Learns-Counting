@@ -1,5 +1,7 @@
 # GPT Learns Counting
 
+Live at: [https://gmunhoz0810.github.io/GPT-Learns-Counting/](https://gmunhoz0810.github.io/GPT-Learns-Counting/)
+
 ![GPT Learns Counting Interface](/imgs/GPT-Interface.jpg)
 
 In comparisson to the official GPT-4o which still gets this wrong.
@@ -8,10 +10,11 @@ In comparisson to the official GPT-4o which still gets this wrong.
 
 ## What it does
 
-GPT Learns Counting is an interactive web application that demonstrates the power of AI in performing simple counting tasks. The application allows users to input phrases or words and request various counting operations, such as:
+GPT Learns Counting is an improved version of the traditional GPT models, which still struggle with letter/word counting tasks.
 
-- Counting the occurrences of a specific letter in a word or phrase
-- Counting the total number of characters in a given text
+This new version can correctly:
+- Count the occurrences of a specific letter in a word or phrase
+- Count the total number of characters in a given text
 
 ## The problem it solves
 
@@ -38,12 +41,6 @@ The core of this application relies on OpenAI's function calling feature. Here's
 6. **Display**: The response is then displayed to the user.
 
 This approach allows the AI to perform exact counting operations while maintaining a natural language interface for the user.
-
-## Try it out!
-
-You can experience GPT Learns Counting live at [https://gmunhoz0810.github.io/GPT-Learns-Counting/](https://gmunhoz0810.github.io/GPT-Learns-Counting/)
-
-Feel free to ask it to count letters, words, or characters in any phrase you can think of!
 
 ## Feedback and Contributions
 
