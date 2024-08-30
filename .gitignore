@@ -8,3 +8,4 @@ backend/new_env/
 *.map
 .env/
 backend/.env
+extension/

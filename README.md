@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# GPT Learns Counting
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![GPT Learns Counting Interface](https://raw.githubusercontent.com/gmunhoz0810/GPT-Learns-Counting/imgs/GPT-Learns-Counting.png)
 
-## Available Scripts
+## What it does
 
-In the project directory, you can run:
+GPT Learns Counting is an interactive web application that demonstrates the power of AI in performing simple counting tasks. The application allows users to input phrases or words and request various counting operations, such as:
 
-### `npm start`
+- Counting the occurrences of a specific letter in a word or phrase
+- Counting the total number of characters in a given text
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## The problem it solves
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+While counting letters or characters might seem trivial for humans, it's an interesting challenge for AI language models. This project showcases how we can extend the capabilities of large language models like GPT to perform precise counting tasks, which they are not inherently designed to do.
 
-### `npm test`
+By implementing this functionality, we bridge the gap between natural language processing and exact numerical operations, allowing users to interact with the AI in a more practical and demonstrable way.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How it uses function calling
 
-### `npm run build`
+The core of this application relies on OpenAI's function calling feature. Here's a brief explanation of how it works:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **User Input**: The user submits a query, like "How many 'a's are in 'banana'?"
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **AI Interpretation**: The AI model (GPT-4) interprets the user's intent and determines which function to call.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Function Calling**: Based on the interpretation, the AI calls one of two custom functions:
+   - `count_occurrences(needle, haystack)`: Counts occurrences of a specific letter or word in a phrase.
+   - `count_characters(text)`: Counts the total number of characters in a given text.
 
-### `npm run eject`
+4. **Result Processing**: The function performs the counting operation and returns the result.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+5. **Response Generation**: The application takes the function's result and generates a human-readable response.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+6. **Display**: The response is then displayed to the user.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This approach allows the AI to perform exact counting operations while maintaining a natural language interface for the user.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Try it out!
 
-## Learn More
+You can experience GPT Learns Counting live at [https://gmunhoz0810.github.io/GPT-Learns-Counting/](https://gmunhoz0810.github.io/GPT-Learns-Counting/)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Feel free to ask it to count letters, words, or characters in any phrase you can think of!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Feedback and Contributions
 
-### Code Splitting
+We welcome feedback and contributions to this project. If you have any suggestions or encounter any issues, please open an issue on our GitHub repository.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Happy counting!
